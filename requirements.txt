@@ -1,10 +1,10 @@
-matplotlib==3.10.1
-numpy==2.2.5
-Pillow==11.2.1
-scikit_learn==1.2.2
+matplotlib==3.9.2
+numpy==1.26.4
+Pillow==10.4.0
+scikit_learn==1.6.1
 seaborn==0.13.2
-streamlit==1.16.0
 streamlit==1.44.1
 torch==2.7.0
 torchvision==0.22.0
 tqdm==4.66.5
+altair<5
