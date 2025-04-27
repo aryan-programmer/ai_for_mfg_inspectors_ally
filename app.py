@@ -214,7 +214,7 @@ if input_method == "File Uploader":
         )
         images, captions = map(list, zip(*uploaded_file_images))
         st.image(images, caption=captions, width=200)
-        st.success("Image uploaded successfully!")
+        st.success("Image(s) uploaded successfully!")
     else:
         st.warning("Please upload at least 1 image file.")
 
@@ -232,7 +232,7 @@ elif input_method == "Camera Input":
         st.warning("Please click an image.")
 
 
-submit = st.button(label="Submit a Floor Tile Image")
+submit = st.button(label="Submit Floor Tile Image(s)")
 if submit:
     st.subheader("Output")
     img_file_path = ()
@@ -270,12 +270,12 @@ if submit:
                 st.image(bad_images, caption=bad_captions, use_container_width=True)
             elif len(bad_res) == 0:
                 st.write(
-                    "Congratulations! All of your products have been classified as a 'Good' item with no anomalies detected in the inspection images."
+                    "Congratulations! All of your products have been classified as 'Good' items with no anomalies detected in the inspection images."
                 )
                 show_good_images(good_res)
             else:
                 st.write(
-                    "Our AI-based visual inspection system has classified all of the below products as a 'Good' item with no anomalies detected:"
+                    "Our AI-based visual inspection system has classified all of the below products as 'Good' items with no anomalies detected:"
                 )
                 show_good_images(good_res)
                 st.write(
