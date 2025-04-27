@@ -224,9 +224,9 @@ elif input_method == "Camera Input":
     if camera_image_file is not None:
         camera_file_img = (
             load_uploaded_image(camera_image_file),
-            camera_image_file.name,
+            "Camera Input",
         )
-        st.image(camera_file_img, caption="Camera Input Image", width=300)
+        st.image(camera_file_img[0], caption="Camera Input Image", width=300)
         st.success("Image clicked successfully!")
     else:
         st.warning("Please click an image.")
@@ -245,7 +245,6 @@ if submit:
     else:
         with st.spinner(text="This may take a moment..."):
             good_res, bad_res = anomaly_detection(img_file_path)
-            bad_images, bad_captions = map(list, zip(*bad_res))
 
             def show_good_images(good_res: Sequence[tuple[Image.Image, str]]):
                 good_res_even, good_res_odd = good_res[::2], good_res[1::2]
@@ -267,6 +266,7 @@ if submit:
                 st.write(
                     "We're sorry to inform you that our AI-based visual inspection system has detected no good products, i.e. all your products are anomalous."
                 )
+                bad_images, bad_captions = map(list, zip(*bad_res))
                 st.image(bad_images, caption=bad_captions, use_container_width=True)
             elif len(bad_res) == 0:
                 st.write(
@@ -281,4 +281,5 @@ if submit:
                 st.write(
                     "However, we're sorry to inform you that the below products have an anomaly in thier inspection images."
                 )
+                bad_images, bad_captions = map(list, zip(*bad_res))
                 st.image(bad_images, caption=bad_captions, use_container_width=True)
